@@ -10,7 +10,7 @@ jobs:
       cleanversion: ${{ steps.stepcleanversion.outputs.version }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/upload-artifact@v3
 
       - name: Set up JDK for compilation
         uses: actions/setup-java@v2
@@ -19,7 +19,7 @@ jobs:
           java-version: '11'
 
       - name: Cache local Maven repository
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
